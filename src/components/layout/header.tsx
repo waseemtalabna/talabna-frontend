@@ -14,9 +14,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import {Icon} from "@mui/material";
+import {inherits} from "node:util";
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'About Us', 'Services', 'Why Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 
 
 export const Header: React.FC = () => {
@@ -40,29 +43,20 @@ export const Header: React.FC = () => {
     };
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+        <AppBar position="static" sx={{backgroundColor: 'Background'}} className='z-50 shadow-lg h-20'>
+            <Container maxWidth="lg" className='items-center h-full'>
+                <Toolbar disableGutters className='h-full'>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    {/* Medium to Large Screen LOGO */}
+                    <Box component="img" alt="logo"
+                         src={"/images/logo.png"}
+                         sx={{height: 48, display: { xs: 'none', md: 'flex' }, mr: 1}}
+                         width={150}
+                    />
+
+
+                    {/* Sidebar menu on small screen*/}
+                    <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }} >
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -98,31 +92,22 @@ export const Header: React.FC = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+                    {/* Small Screen Logo*/}
+                    <Box component="div" className='justify-center'
+                         sx={{ flexGrow: 1, height: 32, display: { xs: 'flex', md: 'none' }, mr: 1}}>
+                        <Box component="img" alt="logo"
+                             src={"/images/logo.png"}
+                             width={100}
+                        />
+                    </Box>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} className='justify-center'>
                         {pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, color: 'primary.contrastText', display: 'block' }}
                             >
                                 {page}
                             </Button>

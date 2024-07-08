@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import {Layout} from "@/components/layout";
 import {Suspense} from "react";
+import {ThemeProvider} from "@mui/material/styles";
+
+import {defaultTheme} from "@/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +21,12 @@ export default function RootLayout(props:{
   return (
     <html lang={props.params.locale}>
       <body className={inter.className}>
+        <ThemeProvider theme={defaultTheme}>
           <Layout>
-              {props.children}
+            {props.children}
           </Layout>
+        </ThemeProvider>
+
 
       </body>
     </html>
