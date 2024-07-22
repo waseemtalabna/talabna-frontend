@@ -4,6 +4,8 @@ import "../globals.css";
 import {Layout} from "@/components/layout";
 import {Suspense} from "react";
 import {ThemeProvider} from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import Box from '@mui/material/Box';
 
 import {defaultTheme} from "@/themes";
 
@@ -22,9 +24,12 @@ export default function RootLayout(props:{
     <html lang={props.params.locale}>
       <body className={inter.className}>
         <ThemeProvider theme={defaultTheme}>
-          <Layout>
-            {props.children}
-          </Layout>
+          <Box component='div' sx={{height: '100vh'}}>
+            <CssBaseline />
+            <Layout>
+              {props.children}
+            </Layout>
+          </Box>
         </ThemeProvider>
 
 

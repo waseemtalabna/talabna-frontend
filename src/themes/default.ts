@@ -10,14 +10,14 @@ const defaultTheme = createTheme({
             light: '#dc309c',
             main: '#902066',
             dark: '#5d1441',
-            contrastText: '#000',
+            contrastText: '#323643',
         },
         /* Secondary Color */
         secondary: {
             light: '#ffd328',
             main: '#ffc529',
             dark: '#cc9d20',
-            contrastText: '#000',
+            contrastText: '#323643',
         },
         /* Background color */
         background: {
@@ -46,6 +46,15 @@ const defaultTheme = createTheme({
             fontWeight: 700
         }
     },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 900,
+            lg: 1280,
+            xl: 1400,
+        },
+    },
     components: {
         MuiButton: {
             defaultProps: {
@@ -54,6 +63,12 @@ const defaultTheme = createTheme({
             styleOverrides: {
                 root: {
                     textTransform: 'none',
+                    backgroundColor: 'transparent',
+                    "&:hover": {
+                        //you want this to be the same as the backgroundColor above
+                        backgroundColor: "transparent",
+                        color: '#902066'
+                    }
                 }
             }
         },
